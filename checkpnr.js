@@ -7,9 +7,10 @@ function kollaStringLength(tpersonnr){
         length_ok = true
 
     return length_ok;
-
 } 
-
+/*pnrToNumber()
+In: personnummer 10 siffror som string typ
+Ut: personnummer som array i number typ*/
 function pnrToNumber(tpersonnr){
     //casta string till array med chars
     const arr_pnr = tpersonnr.split('');
@@ -23,19 +24,23 @@ function pnrToNumber(tpersonnr){
 
     return newPnrArr;
 }
+
+/*function multipliceraPnr()
+In: personnumer som array med numbers
+Ut:strinng med multiplicerade siffror i personnummer*/
 //Multiplicerar varannan siffra i personnumret med 1 sen 2 osv
 function multipliceraPnr(arr_med_pnr_siffro){
     let = str_multiplicerade_siffror = "";
 
-    //Gammal hederli for loop istället .map() funktion
+    //Gammal hederli forloop istället .map() funktion
     for (let i = 0; i < 9; i++) {
         
-        if ((i+1)%2 === 0){
+        if ((i+1)%2 === 0){//Om index i array udda, multiplicera med 1
             const num_siffra = Number(arr_med_pnr_siffro[i]) * 1;
             //console.log(` :${num_siffra}: `)
             str_multiplicerade_siffror += num_siffra;
         }
-        else{
+        else{//om index är jämnt multiplicera med 2
             const num_siffra = Number(arr_med_pnr_siffro[i]) * 2;
             //console.log(` :${num_siffra}: `)
             str_multiplicerade_siffror += num_siffra;
@@ -45,6 +50,9 @@ function multipliceraPnr(arr_med_pnr_siffro){
       return str_multiplicerade_siffror;
 }//End of multiplicerPnr()
 
+/*function addSiffrorAndCheck
+in: string med multiplicerade siffror 
+ut: kontrollsiffra som i typ Number*/
 function addSiffrorAndCheck(multipsiffror_str){
     const arr_siffror = multipsiffror_str.split('');
     let summa = 0; //summan av alla siffror i de spitatde personummret
@@ -59,13 +67,14 @@ function addSiffrorAndCheck(multipsiffror_str){
         substractfrom = (Math.floor(summa /10))*10;
         substractfrom += 10;
         kontrollsiffra = substractfrom - summa;
-    }
-    
+    }    
     //console.log(`summa: ${summa}`)
     //console.log(`Kontrollsiffra= ${kontrollsiffra}`)
     return kontrollsiffra;
 }
-
+/*getKontrollSiffrab() 
+In: Inmatade personnumret som array med number
+Ut: kontroll siffran som number*/
 function getKontrollSiffran(tpersonnumret){
     let kontrollsiffra = tpersonnumret[tpersonnumret.length-1];
     //console.log(`verklig kontrollsiffra= ${kontrollsiffra}`)
